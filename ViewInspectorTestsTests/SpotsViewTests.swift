@@ -5,13 +5,9 @@
 //  Created by Santiago Ochoa Bernaldo de Quiros on 16/1/25.
 //
 
-import ViewInspectorPOC
-import Foundation
 import XCTest
+import ViewInspectorPOC
 import ViewInspector
-import SwiftUI
-
-
 
 final class SpotsViewTests: XCTestCase {
     
@@ -22,7 +18,7 @@ final class SpotsViewTests: XCTestCase {
     }
     
     func test_init_doesNotLoadSpots() {
-        let (sut, loader, _) = makeSUT()
+        let (_, loader, _) = makeSUT()
         
         XCTAssertEqual(loader.spotsCallCount, 0)
     }
