@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyDXyOPOmp18RWK914yKbzJcPcw70vj5xL4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>267551982411</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.viewinspectorpoc.app</string>
+	<key>PROJECT_ID</key>
+	<string>iosleadquestions</string>
+	<key>STORAGE_BUCKET</key>
+	<string>iosleadquestions.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:267551982411:ios:bc7e38f30c0e6e6cb15ece</string>
+</dict>
+</plist>

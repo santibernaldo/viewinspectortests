@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1C4E68102D39872100ACEA4D /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 1C4E680F2D39872100ACEA4D /* ViewInspector */; };
+		1C965DAD2D4031A600A7A5AF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1C965DAC2D4031A600A7A5AF /* FirebaseAuth */; };
+		1C965DB12D4031BE00A7A5AF /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1C965DB02D4031BE00A7A5AF /* FirebaseStorage */; };
+		1C965DCB2D40361A00A7A5AF /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1C965DCA2D40361A00A7A5AF /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,15 +31,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C4E67C72D39845000ACEA4D /* ViewInspectorTests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewInspectorTests.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C4E67D82D39845100ACEA4D /* ViewInspectorTestsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewInspectorTestsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1C4E67E22D39845100ACEA4D /* ViewInspectorTestsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewInspectorTestsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C4E67C72D39845000ACEA4D /* ViewInspectorPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewInspectorPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C4E67D82D39845100ACEA4D /* ViewInspectorPOCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewInspectorPOCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C4E67E22D39845100ACEA4D /* ViewInspectorPOCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewInspectorPOCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		1C4E67C92D39845000ACEA4D /* ViewInspectorTests */ = {
+		1C4E67C92D39845000ACEA4D /* ViewInspectorPOC */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ViewInspectorTests;
+			path = ViewInspectorPOC;
 			sourceTree = "<group>";
 		};
 		1C4E67DB2D39845100ACEA4D /* ViewInspectorTestsTests */ = {
@@ -56,6 +59,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C965DCB2D40361A00A7A5AF /* FirebaseFirestore in Frameworks */,
+				1C965DAD2D4031A600A7A5AF /* FirebaseAuth in Frameworks */,
+				1C965DB12D4031BE00A7A5AF /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +86,7 @@
 		1C4E67BE2D39845000ACEA4D = {
 			isa = PBXGroup;
 			children = (
-				1C4E67C92D39845000ACEA4D /* ViewInspectorTests */,
+				1C4E67C92D39845000ACEA4D /* ViewInspectorPOC */,
 				1C4E67DB2D39845100ACEA4D /* ViewInspectorTestsTests */,
 				1C4E67E52D39845100ACEA4D /* ViewInspectorTestsUITests */,
 				1C4E680E2D39872100ACEA4D /* Frameworks */,
@@ -91,9 +97,9 @@
 		1C4E67C82D39845000ACEA4D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1C4E67C72D39845000ACEA4D /* ViewInspectorTests.app */,
-				1C4E67D82D39845100ACEA4D /* ViewInspectorTestsTests.xctest */,
-				1C4E67E22D39845100ACEA4D /* ViewInspectorTestsUITests.xctest */,
+				1C4E67C72D39845000ACEA4D /* ViewInspectorPOC.app */,
+				1C4E67D82D39845100ACEA4D /* ViewInspectorPOCTests.xctest */,
+				1C4E67E22D39845100ACEA4D /* ViewInspectorPOCUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,9 +114,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1C4E67C62D39845000ACEA4D /* ViewInspectorTests */ = {
+		1C4E67C62D39845000ACEA4D /* ViewInspectorPOC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C4E67EC2D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorTests" */;
+			buildConfigurationList = 1C4E67EC2D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorPOC" */;
 			buildPhases = (
 				1C4E67C32D39845000ACEA4D /* Sources */,
 				1C4E67C42D39845000ACEA4D /* Frameworks */,
@@ -121,18 +127,21 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				1C4E67C92D39845000ACEA4D /* ViewInspectorTests */,
+				1C4E67C92D39845000ACEA4D /* ViewInspectorPOC */,
 			);
-			name = ViewInspectorTests;
+			name = ViewInspectorPOC;
 			packageProductDependencies = (
+				1C965DAC2D4031A600A7A5AF /* FirebaseAuth */,
+				1C965DB02D4031BE00A7A5AF /* FirebaseStorage */,
+				1C965DCA2D40361A00A7A5AF /* FirebaseFirestore */,
 			);
 			productName = ViewInspectorTests;
-			productReference = 1C4E67C72D39845000ACEA4D /* ViewInspectorTests.app */;
+			productReference = 1C4E67C72D39845000ACEA4D /* ViewInspectorPOC.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1C4E67D72D39845100ACEA4D /* ViewInspectorTestsTests */ = {
+		1C4E67D72D39845100ACEA4D /* ViewInspectorPOCTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C4E67EF2D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorTestsTests" */;
+			buildConfigurationList = 1C4E67EF2D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorPOCTests" */;
 			buildPhases = (
 				1C4E67D42D39845100ACEA4D /* Sources */,
 				1C4E67D52D39845100ACEA4D /* Frameworks */,
@@ -146,17 +155,17 @@
 			fileSystemSynchronizedGroups = (
 				1C4E67DB2D39845100ACEA4D /* ViewInspectorTestsTests */,
 			);
-			name = ViewInspectorTestsTests;
+			name = ViewInspectorPOCTests;
 			packageProductDependencies = (
 				1C4E680F2D39872100ACEA4D /* ViewInspector */,
 			);
 			productName = ViewInspectorTestsTests;
-			productReference = 1C4E67D82D39845100ACEA4D /* ViewInspectorTestsTests.xctest */;
+			productReference = 1C4E67D82D39845100ACEA4D /* ViewInspectorPOCTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		1C4E67E12D39845100ACEA4D /* ViewInspectorTestsUITests */ = {
+		1C4E67E12D39845100ACEA4D /* ViewInspectorPOCUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1C4E67F22D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorTestsUITests" */;
+			buildConfigurationList = 1C4E67F22D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorPOCUITests" */;
 			buildPhases = (
 				1C4E67DE2D39845100ACEA4D /* Sources */,
 				1C4E67DF2D39845100ACEA4D /* Frameworks */,
@@ -170,11 +179,11 @@
 			fileSystemSynchronizedGroups = (
 				1C4E67E52D39845100ACEA4D /* ViewInspectorTestsUITests */,
 			);
-			name = ViewInspectorTestsUITests;
+			name = ViewInspectorPOCUITests;
 			packageProductDependencies = (
 			);
 			productName = ViewInspectorTestsUITests;
-			productReference = 1C4E67E22D39845100ACEA4D /* ViewInspectorTestsUITests.xctest */;
+			productReference = 1C4E67E22D39845100ACEA4D /* ViewInspectorPOCUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -200,7 +209,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1C4E67C22D39845000ACEA4D /* Build configuration list for PBXProject "ViewInspectorTests" */;
+			buildConfigurationList = 1C4E67C22D39845000ACEA4D /* Build configuration list for PBXProject "ViewInspectorPOC" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -211,15 +220,16 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				1C4E680D2D39871200ACEA4D /* XCRemoteSwiftPackageReference "ViewInspector" */,
+				1C965D882D3FF45800A7A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1C4E67C82D39845000ACEA4D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1C4E67C62D39845000ACEA4D /* ViewInspectorTests */,
-				1C4E67D72D39845100ACEA4D /* ViewInspectorTestsTests */,
-				1C4E67E12D39845100ACEA4D /* ViewInspectorTestsUITests */,
+				1C4E67C62D39845000ACEA4D /* ViewInspectorPOC */,
+				1C4E67D72D39845100ACEA4D /* ViewInspectorPOCTests */,
+				1C4E67E12D39845100ACEA4D /* ViewInspectorPOCUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -275,12 +285,12 @@
 /* Begin PBXTargetDependency section */
 		1C4E67DA2D39845100ACEA4D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1C4E67C62D39845000ACEA4D /* ViewInspectorTests */;
+			target = 1C4E67C62D39845000ACEA4D /* ViewInspectorPOC */;
 			targetProxy = 1C4E67D92D39845100ACEA4D /* PBXContainerItemProxy */;
 		};
 		1C4E67E42D39845100ACEA4D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1C4E67C62D39845000ACEA4D /* ViewInspectorTests */;
+			target = 1C4E67C62D39845000ACEA4D /* ViewInspectorPOC */;
 			targetProxy = 1C4E67E32D39845100ACEA4D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -405,10 +415,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ViewInspectorTests/ViewInspectorTests.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ViewInspectorTests/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ViewInspectorPOC/Preview Content\"";
 				DEVELOPMENT_TEAM = J378NLHGG4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -428,7 +438,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.remotespotios.quirosdeveloper.ViewInspectorTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.viewinspectorpoc.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -444,10 +454,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ViewInspectorTests/ViewInspectorTests.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ViewInspectorTests/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ViewInspectorPOC/Preview Content\"";
 				DEVELOPMENT_TEAM = J378NLHGG4;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -467,7 +477,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.remotespotios.quirosdeveloper.ViewInspectorTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.viewinspectorpoc.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -496,7 +506,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewInspectorTests.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ViewInspectorTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewInspectorPOC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ViewInspectorPOC";
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
@@ -519,7 +529,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewInspectorTests.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ViewInspectorTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViewInspectorPOC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ViewInspectorPOC";
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
@@ -571,7 +581,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1C4E67C22D39845000ACEA4D /* Build configuration list for PBXProject "ViewInspectorTests" */ = {
+		1C4E67C22D39845000ACEA4D /* Build configuration list for PBXProject "ViewInspectorPOC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C4E67EA2D39845200ACEA4D /* Debug */,
@@ -580,7 +590,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C4E67EC2D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorTests" */ = {
+		1C4E67EC2D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorPOC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C4E67ED2D39845200ACEA4D /* Debug */,
@@ -589,7 +599,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C4E67EF2D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorTestsTests" */ = {
+		1C4E67EF2D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorPOCTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C4E67F02D39845200ACEA4D /* Debug */,
@@ -598,7 +608,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1C4E67F22D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorTestsUITests" */ = {
+		1C4E67F22D39845200ACEA4D /* Build configuration list for PBXNativeTarget "ViewInspectorPOCUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1C4E67F32D39845200ACEA4D /* Debug */,
@@ -618,6 +628,14 @@
 				minimumVersion = 0.10.1;
 			};
 		};
+		1C965D882D3FF45800A7A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -625,6 +643,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1C4E680D2D39871200ACEA4D /* XCRemoteSwiftPackageReference "ViewInspector" */;
 			productName = ViewInspector;
+		};
+		1C965DAC2D4031A600A7A5AF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C965D882D3FF45800A7A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		1C965DB02D4031BE00A7A5AF /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C965D882D3FF45800A7A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		1C965DCA2D40361A00A7A5AF /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C965D882D3FF45800A7A5AF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

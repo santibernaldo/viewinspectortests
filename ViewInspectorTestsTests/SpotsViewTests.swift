@@ -5,70 +5,218 @@
 //  Created by Santiago Ochoa Bernaldo de Quiros on 16/1/25.
 //
 
-import ViewInspectorTests
+import ViewInspectorPOC
 import Foundation
 import XCTest
 import ViewInspector
 import SwiftUI
 
-struct SpotView: View {
+@Observable
+class SpotsViewModel: ObservableObject {
+    
     private let loader: SpotsLoader
     
-    public init(loader: SpotsLoader) {
+    var isLoading: Bool = false
+    var spots: [SpotItem] = []
+    
+    init(loader: SpotsLoader) {
         self.loader = loader
+    }
+    
+    func loadSpots() async {
+        do {
+            isLoading = true
+            let result = try await loader.load()
+            switch result {
+            case .success(let spots):
+                self.spots = spots
+                self.isLoading = false
+            case .failure:
+                isLoading = false
+            }
+        } catch {
+            isLoading = false
+        }
+    }
+}
+
+struct SpotsView: View {
+    @ObservedObject private var viewModel: SpotsViewModel
+    
+    init(viewModel: SpotsViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
         VStack {
-            Text("")
-                
+            headerView
         }
-        .onAppear {
-            Task {
-               try? await loader.load()
-            }
+        .task {
+            await loadSpots()
+        }
+        .refreshable {
+            await loadSpots()
         }
         
     }
+    
+    @ViewBuilder
+    private var headerView: some View {
+        ProgressView("Is loading...")
+            .opacity(viewModel.isLoading ? 1 : 0)
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack(spacing: 16) {
+                ForEach(viewModel.spots) { spot in
+                    Text("\(spot.title)")
+                }
+            }
+            .padding(.horizontal)
+        }
+        
+    }
+    
+    private func loadSpots() async {
+        await viewModel.loadSpots()
+    }
 }
+
 
 final class SpotsViewTests: XCTestCase {
     
-    func test_init_doesNotLoadSpots() {
-        let loader = LoaderSpy()
+    override func setUp() {
+        super.setUp()
         
-        let _ = SpotView(loader: loader)
+        FirebaseTestConfigurator.configureForTests()
+    }
+    
+    func test_init_doesNotLoadSpots() {
+        let (sut, loader, _) = makeSUT()
         
         XCTAssertEqual(loader.spotsCallCount, 0)
     }
     
-    func test_onAppear_loadsSpots() throws {
-        let loader = LoaderSpy()
-        let sut = SpotView(loader: loader)
-
+    @MainActor
+    func test_onAppear_loadsSpots() async throws {
+        let (sut, loader, _) = makeSUT()
+        
         // Render the view
         // simulate onAppear
         let inspectedView = try sut.inspect()
-        try inspectedView.find(ViewType.VStack.self).callOnAppear()
-
+        try await inspectedView.find(ViewType.VStack.self).callTask()
+        
         XCTAssertEqual(loader.spotsCallCount, 1, "Expected spots to load onAppear")
     }
     
+    @MainActor
+    func test_pullToRefresh_loadsSpots() async throws {
+        let (sut, loader, _) = makeSUT()
+        
+        // Render the view
+        // simulate onAppear
+        let inspectedView = try sut.inspect()
+        try await inspectedView.find(ViewType.VStack.self).callTask()
+        
+        try await inspectedView.find(ViewType.VStack.self).callRefreshable()
+        XCTAssertEqual(loader.spotsCallCount, 2, "Expected spots to load onAppear")
+        
+        try await inspectedView.find(ViewType.VStack.self).callRefreshable()
+        XCTAssertEqual(loader.spotsCallCount, 3, "Expected spots to load onAppear")
+    }
     
-    class LoaderSpy: SpotsLoader {
-        private var resultUploadDocument: Result<[SpotItem], Swift.Error> = .failure(Error.anyError as Error)
+    @MainActor
+    func test_isLoadingTrue_showsLoadingIndicator() async throws {
+        let (sut, loader, viewModel) = makeSUT()
+        
+        // Render the view
+        let inspectedView = try sut.inspect()
+        
+        // Stub the loader to return immediately
+        loader.completeLoadingSuccessfully(spots: [])
+        
+        // Before loading starts, ProgressView should not be visible
+        XCTAssertEqual(try inspectedView.find(ViewType.ProgressView.self).opacity(), 0)
+        
+        // Simulate the `task` modifier calling `loadSpots`
+        //try await inspectedView.find(ViewType.VStack.self).callTask()
+        
+        viewModel.isLoading = true
+        
+        // Verify the loading state
+        XCTAssertEqual(try inspectedView.find(ViewType.ProgressView.self).opacity(), 1)
+        
+        // Simulate the end of loading
+        viewModel.isLoading = false
+        
+        // Verify the ProgressView disappears after loading
+        XCTAssertEqual(try inspectedView.find(ViewType.ProgressView.self).opacity(), 0)
+    }
+    
+    func test_loadFeedCompletion_dispatchesFromBackgroundToMainThread() async throws {
+        let (sut, loader, _) = makeSUT()
+        
+        let inspectedView = try await MainActor.run {
+            try sut.inspect()
+        }
+        
+        let exp = expectation(description: "Wait for background queue")
+        
+        Task { @MainActor in
+            do {
+                try await inspectedView.find(ViewType.VStack.self).callTask()
+            } catch {
+                XCTFail("Error executing callTask: \(error)")
+            }
+        }
+        
+        DispatchQueue.global().async {
+            loader.completeLoadingSuccessfully(spots: [])
+            exp.fulfill()
+        }
+        
+        await fulfillment(of: [exp], timeout: 1.0)
+    }
+    
+    private func makeSUT(documentID: String = "",
+                         file: StaticString = #filePath,
+                         line: UInt = #line
+    ) -> (sut: SpotsView, loader: SpotsLoaderSpy, viewModel: SpotsViewModel) {
+        let loader = SpotsLoaderSpy()
+        let viewModel = SpotsViewModel(loader: loader)
+        let sut = SpotsView(viewModel: viewModel)
+        //trackForMemoryLeaks(loader, file: file, line: line)
+        return (sut, loader, viewModel)
+    }
+    
+    class SpotsLoaderSpy: SpotsLoader {
+        private var resultGetSpots: Result<[SpotItem], Swift.Error> = .failure(Error.anyError as Error)
+        var spotsCallCount = 0
         
         enum Error: Swift.Error {
             case anyError
         }
         
-        var spotsCallCount = 0
+        func completeLoadingSuccessfully(spots: [SpotItem]) {
+            resultGetSpots = .success(spots)
+        }
         
         func load() async throws -> SpotsLoader.Result {
             spotsCallCount += 1
-            
-            return resultUploadDocument
+            return resultGetSpots
         }
     }
+}
 
+private final class MainQueueDispatchDecorator: SpotsLoader {
+    private let decoratee: SpotsLoader
+    
+    init(decoratee: SpotsLoader) {
+        self.decoratee = decoratee
+    }
+    
+    @MainActor
+    func load() async throws -> SpotsLoader.Result {
+        let result = try await decoratee.load()
+        return result
+    }
 }
