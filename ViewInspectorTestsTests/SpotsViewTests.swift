@@ -64,9 +64,6 @@ final class SpotsViewTests: XCTestCase {
         // Before loading starts, ProgressView should not be visible
         XCTAssertEqual(try inspectedView.find(ViewType.ProgressView.self).opacity(), 0)
         
-        // Simulate the `task` modifier calling `loadSpots`
-        //try await inspectedView.find(ViewType.VStack.self).callTask()
-        
         viewModel.isLoading = true
         
         // Verify the loading state
@@ -111,7 +108,6 @@ final class SpotsViewTests: XCTestCase {
         let loader = SpotsLoaderSpy()
         let viewModel = SpotsViewModel(loader: loader)
         let sut = SpotsView(viewModel: viewModel)
-        //trackForMemoryLeaks(loader, file: file, line: line)
         return (sut, loader, viewModel)
     }
     
