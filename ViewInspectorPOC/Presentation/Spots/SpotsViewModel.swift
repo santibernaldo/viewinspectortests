@@ -25,7 +25,7 @@ public class SpotsViewModel: ObservableObject {
             let result = try await loader.load()
             switch result {
             case .success(let spots):
-                //assert(Thread.isMainThread, "UI updates must be performed on the main thread.")
+                assert(Thread.isMainThread, "UI updates must be performed on the main thread.")
                 self.spots = spots
                 self.isLoading = false
             case .failure:
