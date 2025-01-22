@@ -10,15 +10,10 @@ import FirebaseAuth
 
 struct ContentView: View {
     
-    let spot: SpotItem = uniqueItem()
+    private let loader = RemoteFirebaseSpotLoader(client: Constants.CollectionFirebase.spots)
     
-    public var collectionFireBaseForSpotComments: FirebaseCollectionAddDocumentProtocol {
-        Constants.CollectionFirebase.spots.document(spot.idFirebaseDocument).collection(Constants.CollectionFirebase.comments)
-    }
-  
     var body: some View {
-        SpotCommentsUIComposer.compose(spot: spot, authManager: AuthManager(authService: Auth.auth()),
-                                       commentsLoader: FirebaseRemoteAddCommentsLoader(collection: collectionFireBaseForSpotComments)).view
+        SpotsUIComposer.compose(loader: loader).view
     }
 }
 
